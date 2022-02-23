@@ -1,0 +1,32 @@
+[
+  {
+    "Sourcefile": null,
+    "Include": "",
+    "Includepath": "C:\\Users\\krzys\\AppData\\Local\\Arduino15\\packages\\megaTinyCore\\hardware\\megaavr\\2.5.10\\cores\\megatinycore"
+  },
+  {
+    "Sourcefile": null,
+    "Include": "",
+    "Includepath": "C:\\Users\\krzys\\AppData\\Local\\Arduino15\\packages\\megaTinyCore\\hardware\\megaavr\\2.5.10\\variants\\txy4"
+  },
+  {
+    "Sourcefile": "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\build\\sketch\\Altimetr_SPI.ino.cpp",
+    "Include": "SPI.h",
+    "Includepath": "C:\\Users\\krzys\\AppData\\Local\\Arduino15\\packages\\megaTinyCore\\hardware\\megaavr\\2.5.10\\libraries\\SPI\\src"
+  },
+  {
+    "Sourcefile": "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\build\\sketch\\Altimetr_SPI.ino.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\build\\sketch\\Altimetr_SPI.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\krzys\\AppData\\Local\\Arduino15\\packages\\megaTinyCore\\hardware\\megaavr\\2.5.10\\libraries\\SPI\\src\\SPI.cpp",
+    "Include": "",
+    "Includepath": null
+  }
+]
