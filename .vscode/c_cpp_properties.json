@@ -38,6 +38,10 @@
                 "C:\\Users\\krzys\\AppData\\Local\\Arduino15\\packages\\megaTinyCore\\hardware\\megaavr\\2.5.10\\cores\\megatinycore",
                 "C:\\Users\\krzys\\AppData\\Local\\Arduino15\\packages\\megaTinyCore\\hardware\\megaavr\\2.5.10\\variants\\txy4",
                 "C:\\Users\\krzys\\AppData\\Local\\Arduino15\\packages\\megaTinyCore\\hardware\\megaavr\\2.5.10\\libraries\\SPI\\src",
+                "C:\\Users\\krzys\\OneDrive\\Dokumenty\\Arduino\\libraries\\Adafruit_BMP280_Library",
+                "C:\\Users\\krzys\\OneDrive\\Dokumenty\\Arduino\\libraries\\Adafruit_Unified_Sensor",
+                "C:\\Users\\krzys\\OneDrive\\Dokumenty\\Arduino\\libraries\\Adafruit_BusIO",
+                "C:\\Users\\krzys\\AppData\\Local\\Arduino15\\packages\\megaTinyCore\\hardware\\megaavr\\2.5.10\\libraries\\Wire\\src",
                 "c:\\users\\krzys\\appdata\\local\\arduino15\\packages\\dxcore\\tools\\avr-gcc\\7.3.0-atmel3.6.1-azduino4b\\lib\\gcc\\avr\\7.3.0\\include",
                 "c:\\users\\krzys\\appdata\\local\\arduino15\\packages\\dxcore\\tools\\avr-gcc\\7.3.0-atmel3.6.1-azduino4b\\lib\\gcc\\avr\\7.3.0\\include-fixed",
                 "c:\\users\\krzys\\appdata\\local\\arduino15\\packages\\dxcore\\tools\\avr-gcc\\7.3.0-atmel3.6.1-azduino4b\\avr\\include"
