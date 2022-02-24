@@ -1,24 +1,8 @@
 #line 1 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
 #include <Arduino.h>
 #include <SPI.h>
-/*
-1. UART connection
-  -uC receve
-  -uC send
-2. SPI connection
-  -Chip id
-  -Read Calibration data
-  -Read Temperature and preassure
-  -Write Flash
-  -Read Flash
-3. Hight measurement
-  -Get hight from preassure
-  -Get the highest value
-  -Write it to the Flash
-4. Interrupt jumper
-  -Interrupt if the pin is connected to GND
-  -Get the highest value from the Flash
-*/
+#include <avr/eeprom.h>
+
 // pinout
 // CS -> write LOW to choose the salve
 #define WRITE_PROTECTION 0  // WP - PA4
@@ -40,13 +24,13 @@
 #define PREASSURE_REGISTER 0xF7
 #define TEMPERATURE_REGISTER 0xFA
 #define CHIP_ID_REGISTER 0xD0
-#define CALIBRATION_DATA_REGISTER_0 0xA1
-
 #define REGISTER_DIG_T1 0x88
-#define CHIP_ID 0x58
-#define seaLevelhPa 1020.0
 #define FIRST_MSB 0
 #define LAST_MSB 1
+#define CHIP_ID 0x58
+
+#define seaLevelhPa 1020.0
+#define TIME_INTERVAL 1000 // ms
 
 struct BMP280_HandleTypedef
 {
@@ -65,34 +49,39 @@ struct BMP280_HandleTypedef
 };
 
 BMP280_HandleTypedef calibrationData;
-
-#line 68 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
+float maxHightEEM EEMEM;
+float maxHightRAM;
+float initialHight;
+uint64_t t = 0; // timer updated with millis()
+#line 55 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
 void setup();
-#line 88 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
+#line 94 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
 void loop();
-#line 120 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
-int32_t ReadRegister(uint8_t thisRegister, uint8_t bytesToRead, uint8_t chipSelectPin);
-#line 158 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
+#line 119 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
 uint16_t ReadTwoRegistersUint(uint8_t thisRegister, uint8_t chipSelectPin, bool lastMSB);
-#line 194 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
+#line 155 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
 int16_t ReadTwoRegistersInt(uint8_t thisRegister, uint8_t chipSelectPin, bool lastMSB);
-#line 230 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
+#line 191 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
 void ReadRegisterToIntArray(uint8_t thisRegister, uint8_t bytesToRead, uint8_t chipSelectPin, int8_t *array);
-#line 250 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
-void ReadRegisterToUintArray(uint8_t thisRegister, uint8_t bytesToRead, uint8_t chipSelectPin, uint8_t *array);
-#line 272 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
+#line 211 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
+void ReadRegisterToUintArray(uint8_t readRegister, uint8_t bytesToRead, uint8_t chipSelectPin, uint8_t *array);
+#line 229 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
 void writeRegister(uint8_t thisRegister, uint8_t thisValue, uint8_t chipSelectPin);
-#line 286 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
+#line 243 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
 struct BMP280_HandleTypedef calibration();
-#line 314 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
+#line 271 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
 void BMP280_CONFIG();
-#line 349 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
+#line 300 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
 float ReadTemperature(volatile uint8_t *values, int32_t *t_fine, struct BMP280_HandleTypedef _bmp280_calib);
-#line 373 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
+#line 324 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
 float ReadPreassure(volatile uint8_t values[6], int32_t t_fine, BMP280_HandleTypedef _bmp280_calib);
-#line 405 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
-float ReadHight(float preassure);
-#line 68 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
+#line 356 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
+float ReadHight(float *preassure);
+#line 365 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
+float GetHight(float initialHight);
+#line 389 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
+bool CheckBMPConnection();
+#line 55 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
 void setup()
 {
   // put your setup code here, to run once:
@@ -103,84 +92,58 @@ void setup()
   Serial.println("START");
   // start the SPI library:
   SPI.begin();
-  // // Configure SCP1000 for low noise configuration:
-  // writeRegister(0x02, 0x2D);
-  // writeRegister(0x01, 0x03);
-  // writeRegister(0x03, 0x02);
-  // give the sensor time to set up:
+  // if there is a wrong CHIP_ID detected
+  if (!CheckBMPConnection())
+  {
+    // blink 3 times
+    for (int i = 0; i > 6; i++)
+    {
+      digitalWrite(LED, !digitalRead(LED));
+      delay(100);
+    }
+    // Do nothing, it is not going to work
+    while (1)
+    {
+      delay(5000);
+    }
+  }
   BMP280_CONFIG();
-  delay(100);
+  // give the sensor time to set up:
+  delay(20);
+  // get the calibration data
   calibrationData = calibration();
+  // set 0 level
+  initialHight = GetHight(0.0);
+  if (Serial.available())
+  {
+    Serial.print("INITIAL HIGHT:\t");
+    Serial.println(initialHight);
+  }
 }
-uint64_t t = 0;
+
 void loop()
 {
-  if (millis() - t > 5000)
+  if (millis() - t > TIME_INTERVAL)
   {
-    uint8_t values[6];
-    int32_t t_fine = 0;
-    ReadRegisterToUintArray(PREASSURE_REGISTER, 6, CS_BMP, values);
-    Serial.print("Temperature:\t");
-    Serial.println(ReadTemperature(values, &t_fine, calibrationData));
-    Serial.print("t_fie:\t");
-    Serial.println(t_fine);
-    float pressure = ReadPreassure(values, t_fine, calibrationData);
-    Serial.print("Pressure:\t");
-    Serial.println(pressure);
-    Serial.print("Hight:\t");
-    Serial.println(ReadHight(pressure));
     t = millis();
+    float hight = GetHight(0.0);
+    if (hight > maxHightRAM)
+    {
+      maxHightRAM = hight;
+    }
+    // If the rocket has already reached the highest point write the max hight to flash
+    else
+    {
+      // eeprom_update_float(&maxHightEEM, maxHightRAM);
+    }
+
+    if (Serial.available() && !digitalRead(SEND_DATA_UART_EN))
+    {
+      float readHight = eeprom_read_float(&maxHightEEM);
+      Serial.print("Max Hight:\t");
+      Serial.println(readHight);
+    }
   }
-  if (Serial.available() && !digitalRead(SEND_DATA_UART_EN))
-  {
-    uint8_t result = 0;
-    ReadRegisterToUintArray(CHIP_ID_REGISTER, 1, CS_BMP, &result);
-    Serial.print("Chip ID:\t");
-    Serial.print(CHIP_ID);
-    Serial.print("\tResult:\t");
-    Serial.println(result);
-    delay(500);
-  }
-
-  delay(100);
-}
-// Read from or write to register from the SCP1000:
-int32_t ReadRegister(uint8_t thisRegister, uint8_t bytesToRead, uint8_t chipSelectPin)
-{
-  int16_t inByte = 0; // incoming byte from the SPI
-  int32_t result = 0; // result to return
-  Serial.print("From register:\t");
-  Serial.print(thisRegister, HEX);
-  Serial.print("\t");
-
-  uint8_t readRegister = READ_REGISTER(thisRegister);
-  Serial.println(readRegister, HEX);
-
-  // take the chip select low to select the device:
-  digitalWrite(chipSelectPin, LOW);
-  // send the device the register you want to read:
-  SPI.transfer(readRegister);
-  // send a value of 0 to read the first byte returned:
-  result = SPI.transfer(0x00);
-  // decrement the number of bytes left to read:
-  bytesToRead--;
-  // if you still have another byte to read:
-  while (bytesToRead > 0)
-  {
-    // shift the first byte left, then get the second byte:
-    result = result << 8;
-    inByte = SPI.transfer(0x00);
-    // combine the byte you just got with the previous one:
-
-    result = result | inByte;
-    // decrement the number of bytes left to read:
-    bytesToRead--;
-  }
-
-  // take the chip select high to de-select:
-  digitalWrite(chipSelectPin, HIGH);
-  // return the result:
-  return (result);
 }
 
 uint16_t ReadTwoRegistersUint(uint8_t thisRegister, uint8_t chipSelectPin, bool lastMSB)
@@ -275,13 +238,9 @@ void ReadRegisterToIntArray(uint8_t thisRegister, uint8_t bytesToRead, uint8_t c
   // take the chip select high to de-select:
   digitalWrite(chipSelectPin, HIGH);
 }
-void ReadRegisterToUintArray(uint8_t thisRegister, uint8_t bytesToRead, uint8_t chipSelectPin, uint8_t *array)
+void ReadRegisterToUintArray(uint8_t readRegister, uint8_t bytesToRead, uint8_t chipSelectPin, uint8_t *array)
 {
-  Serial.print("From register:\t");
-  Serial.print(thisRegister, HEX);
-  Serial.print("\t");
-  uint8_t readRegister = READ_REGISTER(thisRegister);
-  Serial.println(readRegister, HEX);
+  readRegister = READ_REGISTER(readRegister);
 
   // take the chip select low to select the device:
   digitalWrite(chipSelectPin, LOW);
@@ -364,12 +323,6 @@ void BMP280_CONFIG()
   F4_Register |= (3);      // Normal mode
   writeRegister(0xF4, F4_Register, CS_BMP);
   writeRegister(0xF5, F5_Register, CS_BMP);
-  //
-  // write8(0xF5,F5_Register);
-  // write8(0xF4,F4_Register);
-  // uint8_t configValues[2];
-  // configValues[0] = F4_Register;
-  // configValues[1] = F5_Register;
 }
 
 //---------Calculationg Temperature and preassure------------------------
@@ -430,11 +383,49 @@ float ReadPreassure(volatile uint8_t values[6], int32_t t_fine, BMP280_HandleTyp
   return ((uint32_t)p / 256.0);
 }
 
-float ReadHight(float preassure)
+float ReadHight(float *preassure)
 {
-  preassure /= (float)100.0;
+  *preassure /= (float)100.0;
 
-  float altitude = 44330.0 * (1.0 - pow(preassure / seaLevelhPa, 0.1903));
+  float altitude = 44330.0 * (1.0 - pow(*preassure / seaLevelhPa, 0.1903));
 
   return altitude;
+}
+
+float GetHight(float initialHight)
+{
+  uint8_t values[6];
+  int32_t t_fine;
+  float temperature;
+  // do
+  // {
+  ReadRegisterToUintArray(PREASSURE_REGISTER, 6, CS_BMP, values);
+  temperature = ReadTemperature(values, &t_fine, calibrationData);
+  // } while (temperature < -50.0);
+  float pressure = ReadPreassure(values, t_fine, calibrationData);
+  float hight = ReadHight(&pressure) - initialHight;
+  if (Serial.available())
+  {
+    Serial.print("Temperature [*C]:\t");
+    Serial.println(temperature);
+    Serial.print("Pressure [Pa]:\t");
+    Serial.println(pressure);
+    Serial.print("Hight [m]:\t");
+    Serial.println(hight);
+  }
+  return hight;
+}
+
+bool CheckBMPConnection()
+{
+  uint8_t SpiChipId;
+  ReadRegisterToUintArray(CHIP_ID_REGISTER, 1, CS_BMP, &SpiChipId);
+  if (Serial.available())
+  {
+    Serial.print("Chip ID:\t");
+    Serial.print(CHIP_ID);
+    Serial.print("\tResult:\t");
+    Serial.println(SpiChipId);
+  }
+  return (SpiChipId == CHIP_ID);
 }
