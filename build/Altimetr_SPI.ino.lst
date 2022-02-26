@@ -8296,12 +8296,12 @@ C:\Users\krzys\OneDrive\Dokumenty\Arduino\libraries\Adafruit_BMP280_Library/Adaf
     232a:	90 e0       	ldi	r25, 0x00	; 0
     232c:	0e 94 37 02 	call	0x46e	; 0x46e <delay>
 setup():
-g:\Studia\PUT Rocket LAB\altimetr\Altimetr_SPI/Altimetr_SPI.ino:57
-
-  //   3 wire SPI:     false -> 0xF5[0] -> 0
-  //   IIR filter:     4 -> 0xF5[4:2] -> 010?
-  //   standby [ms]:   125 -> 0xF5 [7:5] -> 010
-  //   */
+g:\Studia\PUT Rocket LAB\altimetr\Altimetr_SPI/Altimetr_SPI.ino:55
+  RMS Noise[cm]:  6.4
+  3 wire SPI:     false -> 0xF5[0] -> 0
+  IIR filter:     4 -> 0xF5[4:2] -> 010?
+  standby [ms]:   125 -> 0xF5 [7:5] -> 010
+  */
   bmp.setSampling(Adafruit_BMP280::MODE_NORMAL,     /* Operating Mode. */
     2330:	22 e0       	ldi	r18, 0x02	; 2
     2332:	30 e0       	ldi	r19, 0x00	; 0
@@ -8357,7 +8357,7 @@ C:\Users\krzys\OneDrive\Dokumenty\Arduino\libraries\Adafruit_BMP280_Library/Adaf
     237e:	77 d3       	rcall	.+1774   	; 0x2a6e <__mulsf3>
 setup():
     2380:	60 93 0e 38 	sts	0x380E, r22	; 0x80380e <initialHight>
-g:\Studia\PUT Rocket LAB\altimetr\Altimetr_SPI/Altimetr_SPI.ino:63
+g:\Studia\PUT Rocket LAB\altimetr\Altimetr_SPI/Altimetr_SPI.ino:61
                   Adafruit_BMP280::SAMPLING_X1,     /* Temp. oversampling */
                   Adafruit_BMP280::SAMPLING_X4,     /* Pressure oversampling */
                   Adafruit_BMP280::FILTER_X4,       /* Filtering. */
@@ -8369,7 +8369,7 @@ g:\Studia\PUT Rocket LAB\altimetr\Altimetr_SPI/Altimetr_SPI.ino:63
     238c:	90 93 11 38 	sts	0x3811, r25	; 0x803811 <initialHight+0x3>
     2390:	8a e1       	ldi	r24, 0x1A	; 26
     2392:	98 e3       	ldi	r25, 0x38	; 56
-g:\Studia\PUT Rocket LAB\altimetr\Altimetr_SPI/Altimetr_SPI.ino:64
+g:\Studia\PUT Rocket LAB\altimetr\Altimetr_SPI/Altimetr_SPI.ino:62
   if (Serial.available())
     2394:	0e 94 47 01 	call	0x28e	; 0x28e <UartClass::available()>
     2398:	89 2b       	or	r24, r25
@@ -8380,7 +8380,7 @@ write():
     23a0:	0e 94 40 07 	call	0xe80	; 0xe80 <Print::write(char const*) [clone .part.2] [clone .constprop.52]>
 setup():
     23a4:	60 91 0e 38 	lds	r22, 0x380E	; 0x80380e <initialHight>
-g:\Studia\PUT Rocket LAB\altimetr\Altimetr_SPI/Altimetr_SPI.ino:67
+g:\Studia\PUT Rocket LAB\altimetr\Altimetr_SPI/Altimetr_SPI.ino:65
   {
     Serial.print("INITIAL HIGHT:\t");
     Serial.println(initialHight);
@@ -8415,7 +8415,7 @@ loop():
 C:\Users\krzys\AppData\Local\Arduino15\packages\megaTinyCore\hardware\megaavr\2.5.10\cores\megatinycore/wiring.c:256
     SREG = oldSREG;
     23d0:	a5 01       	movw	r20, r10
-g:\Studia\PUT Rocket LAB\altimetr\Altimetr_SPI/Altimetr_SPI.ino:73
+g:\Studia\PUT Rocket LAB\altimetr\Altimetr_SPI/Altimetr_SPI.ino:71
   }
 }
 
@@ -8471,7 +8471,7 @@ loop():
 C:\Users\krzys\AppData\Local\Arduino15\packages\megaTinyCore\hardware\megaavr\2.5.10\cores\megatinycore/wiring.c:256
     SREG = oldSREG;
     2426:	00 93 12 38 	sts	0x3812, r16	; 0x803812 <t>
-g:\Studia\PUT Rocket LAB\altimetr\Altimetr_SPI/Altimetr_SPI.ino:75
+g:\Studia\PUT Rocket LAB\altimetr\Altimetr_SPI/Altimetr_SPI.ino:73
   {
     t = millis();
     242a:	10 93 13 38 	sts	0x3813, r17	; 0x803813 <t+0x1>
@@ -8526,7 +8526,7 @@ C:\Users\krzys\OneDrive\Dokumenty\Arduino\libraries\Adafruit_BMP280_Library/Adaf
     2480:	f6 d2       	rcall	.+1516   	; 0x2a6e <__mulsf3>
 loop():
     2482:	20 91 0e 38 	lds	r18, 0x380E	; 0x80380e <initialHight>
-g:\Studia\PUT Rocket LAB\altimetr\Altimetr_SPI/Altimetr_SPI.ino:76
+g:\Studia\PUT Rocket LAB\altimetr\Altimetr_SPI/Altimetr_SPI.ino:74
     float hight = bmp.readAltitude(seaLevelhPa) - initialHight;
     2486:	30 91 0f 38 	lds	r19, 0x380F	; 0x80380f <initialHight+0x1>
     248a:	40 91 10 38 	lds	r20, 0x3810	; 0x803810 <initialHight+0x2>
@@ -8535,7 +8535,7 @@ g:\Studia\PUT Rocket LAB\altimetr\Altimetr_SPI/Altimetr_SPI.ino:76
     2494:	6b 01       	movw	r12, r22
     2496:	7c 01       	movw	r14, r24
     2498:	20 91 0a 38 	lds	r18, 0x380A	; 0x80380a <maxHightRAM>
-g:\Studia\PUT Rocket LAB\altimetr\Altimetr_SPI/Altimetr_SPI.ino:77
+g:\Studia\PUT Rocket LAB\altimetr\Altimetr_SPI/Altimetr_SPI.ino:75
     if (hight > maxHightRAM)
     249c:	30 91 0b 38 	lds	r19, 0x380B	; 0x80380b <maxHightRAM+0x1>
     24a0:	40 91 0c 38 	lds	r20, 0x380C	; 0x80380c <maxHightRAM+0x2>
@@ -8545,14 +8545,14 @@ g:\Studia\PUT Rocket LAB\altimetr\Altimetr_SPI/Altimetr_SPI.ino:77
     24ac:	44 f4       	brge	.+16     	; 0x24be <main+0x41a>
     24ae:	c0 92 0a 38 	sts	0x380A, r12	; 0x80380a <maxHightRAM>
     24b2:	d0 92 0b 38 	sts	0x380B, r13	; 0x80380b <maxHightRAM+0x1>
-g:\Studia\PUT Rocket LAB\altimetr\Altimetr_SPI/Altimetr_SPI.ino:79
+g:\Studia\PUT Rocket LAB\altimetr\Altimetr_SPI/Altimetr_SPI.ino:77
     {
       maxHightRAM = hight;
     24b6:	e0 92 0c 38 	sts	0x380C, r14	; 0x80380c <maxHightRAM+0x2>
     24ba:	f0 92 0d 38 	sts	0x380D, r15	; 0x80380d <maxHightRAM+0x3>
     24be:	8a e1       	ldi	r24, 0x1A	; 26
     24c0:	98 e3       	ldi	r25, 0x38	; 56
-g:\Studia\PUT Rocket LAB\altimetr\Altimetr_SPI/Altimetr_SPI.ino:86
+g:\Studia\PUT Rocket LAB\altimetr\Altimetr_SPI/Altimetr_SPI.ino:84
     // If the rocket has already reached the highest point write the max hight to flash
     else
     {
@@ -8569,14 +8569,14 @@ write():
 loop():
     24d2:	c7 01       	movw	r24, r14
     24d4:	b6 01       	movw	r22, r12
-g:\Studia\PUT Rocket LAB\altimetr\Altimetr_SPI/Altimetr_SPI.ino:89
+g:\Studia\PUT Rocket LAB\altimetr\Altimetr_SPI/Altimetr_SPI.ino:87
     {
       Serial.print("Hight:\t");
       Serial.println(hight);
     24d6:	0e 94 89 07 	call	0xf12	; 0xf12 <Print::println(double, int) [clone .constprop.42]>
     24da:	8a e1       	ldi	r24, 0x1A	; 26
     24dc:	98 e3       	ldi	r25, 0x38	; 56
-g:\Studia\PUT Rocket LAB\altimetr\Altimetr_SPI/Altimetr_SPI.ino:92
+g:\Studia\PUT Rocket LAB\altimetr\Altimetr_SPI/Altimetr_SPI.ino:90
     }
 
     if (Serial.available() && !digitalRead(SEND_DATA_UART_EN))
@@ -8598,7 +8598,7 @@ C:\Users\krzys\AppData\Local\Arduino15\packages\megaTinyCore\hardware\megaavr\2.
 loop():
     24f0:	80 e0       	ldi	r24, 0x00	; 0
     24f2:	90 e0       	ldi	r25, 0x00	; 0
-g:\Studia\PUT Rocket LAB\altimetr\Altimetr_SPI/Altimetr_SPI.ino:94
+g:\Studia\PUT Rocket LAB\altimetr\Altimetr_SPI/Altimetr_SPI.ino:92
     {
       float readHight = eeprom_read_float(&maxHightEEM);
     24f4:	78 d0       	rcall	.+240    	; 0x25e6 <eeprom_read_dword>
@@ -8613,7 +8613,7 @@ loop():
     2504:	b6 01       	movw	r22, r12
     2506:	56 cf       	rjmp	.-340    	; 0x23b4 <main+0x310>
 begin():
-g:\Studia\PUT Rocket LAB\altimetr\Altimetr_SPI/Altimetr_SPI.ino:96
+g:\Studia\PUT Rocket LAB\altimetr\Altimetr_SPI/Altimetr_SPI.ino:94
       Serial.print("Max Hight:\t");
       Serial.println(readHight);
     2508:	61 e0       	ldi	r22, 0x01	; 1
@@ -8790,7 +8790,7 @@ C:\Users\krzys\OneDrive\Dokumenty\Arduino\libraries\Adafruit_BMP280_Library/Adaf
     25d6:	f3 81       	ldd	r31, Z+3	; 0x03
     25d8:	e0 2d       	mov	r30, r0
 _GLOBAL__sub_D_bmp():
-g:\Studia\PUT Rocket LAB\altimetr\Altimetr_SPI/Altimetr_SPI.ino:99
+g:\Studia\PUT Rocket LAB\altimetr\Altimetr_SPI/Altimetr_SPI.ino:97
     }
   }
 }
@@ -8800,7 +8800,7 @@ __base_dtor ():
 C:\Users\krzys\OneDrive\Dokumenty\Arduino\libraries\Adafruit_BMP280_Library/Adafruit_BMP280.cpp:42
     25de:	09 94       	ijmp
 _GLOBAL__sub_D_bmp():
-g:\Studia\PUT Rocket LAB\altimetr\Altimetr_SPI/Altimetr_SPI.ino:99
+g:\Studia\PUT Rocket LAB\altimetr\Altimetr_SPI/Altimetr_SPI.ino:97
     25e0:	df 91       	pop	r29
     25e2:	cf 91       	pop	r28
     25e4:	08 95       	ret

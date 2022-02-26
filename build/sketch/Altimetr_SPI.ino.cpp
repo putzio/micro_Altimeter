@@ -28,7 +28,7 @@ float initialHight;
 uint64_t t = 0; // timer updated with millis()
 #line 28 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
 void setup();
-#line 71 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
+#line 69 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
 void loop();
 #line 28 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
 void setup()
@@ -47,19 +47,17 @@ void setup()
     while (1)
       delay(10);
   }
-  //   /*
-  //   Mode:           Normal -> 0xF4 [1:0] -> 11
-  //   Oversampling:   Standard Resolution
-  //   osrs_p:         x4 -> 0xF4 [4:2] -> 011
-  //   osrs_t:         x1 -> 0xF4 [7:5] -> 001
-
-  //   ODR[Hz]:        7.3
-  //   RMS Noise[cm]:  6.4
-
-  //   3 wire SPI:     false -> 0xF5[0] -> 0
-  //   IIR filter:     4 -> 0xF5[4:2] -> 010?
-  //   standby [ms]:   125 -> 0xF5 [7:5] -> 010
-  //   */
+  /*
+  Mode:           Normal -> 0xF4 [1:0] -> 11
+  Oversampling:   Standard Resolution
+  osrs_p:         x4 -> 0xF4 [4:2] -> 011
+  osrs_t:         x1 -> 0xF4 [7:5] -> 001
+  ODR[Hz]:        7.3
+  RMS Noise[cm]:  6.4
+  3 wire SPI:     false -> 0xF5[0] -> 0
+  IIR filter:     4 -> 0xF5[4:2] -> 010?
+  standby [ms]:   125 -> 0xF5 [7:5] -> 010
+  */
   bmp.setSampling(Adafruit_BMP280::MODE_NORMAL,     /* Operating Mode. */
                   Adafruit_BMP280::SAMPLING_X1,     /* Temp. oversampling */
                   Adafruit_BMP280::SAMPLING_X4,     /* Pressure oversampling */
