@@ -1,5 +1,5 @@
 {
-  "additionalFiles": "..",
+  "additionalFiles": "",
   "builtInLibrariesFolders": "C:\\Users\\krzys\\Downloads\\arduino-1.8.19-windows\\arduino-1.8.19\\libraries",
   "builtInToolsFolders": "C:\\Users\\krzys\\Downloads\\arduino-1.8.19-windows\\arduino-1.8.19\\tools-builder,C:\\Users\\krzys\\Downloads\\arduino-1.8.19-windows\\arduino-1.8.19\\hardware\\tools\\avr,C:\\Users\\krzys\\AppData\\Local\\Arduino15\\packages",
   "compiler.optimization_flags": "",

@@ -134,106 +134,112 @@ _do_txc()           |00001d12|   T  |              FUNC|00000026|     |.text	C:\
 _txc_flush_rx       |00001d1c|   t  |            NOTYPE|        |     |.text	C:\Users\krzys\AppData\Local\Arduino15\packages\megaTinyCore\hardware\megaavr\2.5.10\cores\megatinycore/UART.cpp:105
 __vector_25         |00001d38|   T  |              FUNC|00000050|     |.text	C:\Users\krzys\AppData\Local\Arduino15\packages\megaTinyCore\hardware\megaavr\2.5.10\cores\megatinycore/wiring.c:138
 __vector_14         |00001d88|   T  |              FUNC|00000134|     |.text	C:\Users\krzys\AppData\Local\Arduino15\packages\megaTinyCore\hardware\megaavr\2.5.10\libraries\Wire\src/Wire.cpp:776
-global constructors keyed to 65535_0_Altimetr_SPI.cpp.o.3748|00001ebc|   t  |              FUNC|000001e8|     |.text	C:\Users\krzys\AppData\Local\Arduino15\packages\megaTinyCore\hardware\megaavr\2.5.10\libraries\Wire\src/twi.c:708
-main                |000020a4|   T  |              FUNC|000004d8|     |.text	C:\Users\krzys\AppData\Local\Arduino15\packages\megaTinyCore\hardware\megaavr\2.5.10\cores\megatinycore/main.cpp:49
-_GLOBAL__sub_D_bmp  |0000257c|   t  |              FUNC|0000006a|     |.text
-eeprom_read_dword   |000025e6|   T  |              FUNC|0000000c|     |.text	/home/toolsbuild/workspace/avr8-devices-pack/src/avr-libc/avr/lib/avrxmega3/attiny1624/../../../../libc/misc/eerd_dword.S:50
-eeprom_read_float   |000025e6|   T  |            NOTYPE|        |     |.text	/home/toolsbuild/workspace/avr8-devices-pack/src/avr-libc/avr/lib/avrxmega3/attiny1624/../../../../libc/misc/eerd_dword.S:50
-eeprom_read_byte    |000025f2|   T  |              FUNC|00000010|     |.text	/home/toolsbuild/workspace/avr8-devices-pack/src/avr-libc/avr/lib/avrxmega3/attiny1624/../../../../libc/misc/eerd_byte.S:51
-eeprom_mapen        |000025fa|   T  |            NOTYPE|        |     |.text	/home/toolsbuild/workspace/avr8-devices-pack/src/avr-libc/avr/lib/avrxmega3/attiny1624/../../../../libc/misc/eerd_byte.S:83
-__prologue_saves__  |00002602|   T  |            NOTYPE|00000032|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2169
-__epilogue_restores__|00002634|   T  |            NOTYPE|00000030|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2222
-__subsf3            |00002664|   T  |              FUNC|0000000a|     |.text
-__addsf3            |00002666|   T  |            NOTYPE|        |     |.text
-__addsf3x           |00002688|   T  |              FUNC|000000cc|     |.text
-__cmpsf2            |0000272e|   T  |              FUNC|00000008|     |.text
-__eqsf2             |0000272e|   T  |            NOTYPE|        |     |.text
-__lesf2             |0000272e|   T  |            NOTYPE|        |     |.text
-__ltsf2             |0000272e|   T  |            NOTYPE|        |     |.text
-__nesf2             |0000272e|   T  |            NOTYPE|        |     |.text
-__divsf3            |00002736|   T  |              FUNC|00000004|     |.text
-__divsf3x           |00002750|   T  |              FUNC|000000dc|     |.text
-__divsf3_pse        |00002754|   T  |            NOTYPE|        |     |.text
-__fixunssfsi        |00002806|   T  |              FUNC|00000058|     |.text
-__floatdisf         |0000285e|   T  |              FUNC|00000008|     |.text
-__floatunsisf       |00002866|   T  |              FUNC|0000007a|     |.text
-__floatsisf         |0000286a|   T  |            NOTYPE|        |     |.text
-__floatundisf       |000028e0|   T  |              FUNC|0000007c|     |.text
-__fp_di2sf          |000028e2|   T  |            NOTYPE|        |     |.text
-__fp_cmp            |0000295c|   T  |              FUNC|00000048|     |.text
-__fp_inf            |000029a4|   T  |              FUNC|0000000c|     |.text
-__fp_nan            |000029b0|   T  |              FUNC|00000006|     |.text
-__fp_negdi          |000029b6|   T  |              FUNC|00000020|     |.text
-__fp_pscA           |000029d6|   T  |              FUNC|0000000e|     |.text
-__fp_pscB           |000029e4|   T  |              FUNC|0000000e|     |.text
-__fp_round          |000029f2|   T  |              FUNC|00000022|     |.text
-__fp_split3         |00002a14|   T  |              FUNC|00000044|     |.text
-__fp_splitA         |00002a24|   T  |            NOTYPE|        |     |.text
-__fp_zero           |00002a58|   T  |              FUNC|0000000e|     |.text
-__fp_szero          |00002a5a|   T  |            NOTYPE|        |     |.text
-__gesf2             |00002a66|   T  |              FUNC|00000008|     |.text
-__gtsf2             |00002a66|   T  |            NOTYPE|        |     |.text
-__mulsf3            |00002a6e|   T  |              FUNC|00000004|     |.text
-__mulsf3x           |00002a86|   T  |              FUNC|000000d2|     |.text
-__mulsf3_pse        |00002a8a|   T  |            NOTYPE|        |     |.text
-pow                 |00002b34|   T  |              FUNC|00000098|     |.text
-__unordsf2          |00002bcc|   T  |              FUNC|00000008|     |.text
-exp                 |00002bde|   T  |              FUNC|00000074|     |.text
-__fp_powser         |00002c36|   T  |              FUNC|0000004a|     |.text
-inverse             |00002c80|   T  |              FUNC|0000000e|     |.text
-ldexp               |00002c92|   T  |              FUNC|00000074|     |.text
-log                 |00002d04|   T  |              FUNC|000000a0|     |.text
-modf                |00002d84|   T  |              FUNC|00000066|     |.text
-modff               |00002d84|   T  |            NOTYPE|        |     |.text
-__fp_mpack          |00002dea|   T  |              FUNC|0000001c|     |.text
-__fp_mpack_finite   |00002dee|   T  |            NOTYPE|        |     |.text
-__mulsi3            |00002e06|   T  |            NOTYPE|0000001e|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:648
-__udivmodsi4        |00002e24|   T  |            NOTYPE|00000044|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:1638
-__udivmodsi4_loop   |00002e30|   t  |            NOTYPE|        |     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:1646
-__udivmodsi4_ep     |00002e4a|   t  |            NOTYPE|        |     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:1660
-__muluhisi3         |00002e68|   T  |            NOTYPE|00000014|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:626
-__mulshisi3         |00002e7c|   T  |            NOTYPE|00000004|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:603
-__mulohisi3         |00002e80|   T  |            NOTYPE|00000008|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:613
-__muldi3            |00002e88|   T  |            NOTYPE|00000090|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:617
-__muldi3_6          |00002f18|   T  |            NOTYPE|00000010|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:973
-__moddi3            |00002f28|   T  |            NOTYPE|00000004|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:1964
-__divdi3            |00002f2c|   T  |            NOTYPE|00000002|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:1972
-__divdi3_moddi3     |00002f2e|   T  |            NOTYPE|00000050|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:1977
-__umoddi3           |00002f7e|   T  |            NOTYPE|00000004|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:1806
-__udivdi3           |00002f82|   T  |            NOTYPE|00000002|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:1814
-__udivdi3_umoddi3   |00002f84|   T  |            NOTYPE|00000014|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:1818
-__udivmod64         |00002f98|   T  |            NOTYPE|000000a2|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:1842
-__negdi2            |0000303a|   T  |            NOTYPE|00000020|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2117
-__ashldi3           |0000305a|   T  |            NOTYPE|00000032|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:3169
-__ashrdi3           |0000308c|   T  |            NOTYPE|00000004|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:3122
-__lshrdi3           |00003090|   T  |            NOTYPE|00000036|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:3131
-__adddi3            |000030c6|   T  |            NOTYPE|00000012|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2051
-__subdi3            |000030d8|   T  |            NOTYPE|00000012|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2080
-__cmpdi2_s8         |000030ea|   T  |            NOTYPE|00000018|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2102
-__tablejump2__      |00003102|   T  |            NOTYPE|0000000c|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2296
-__umulhisi3         |0000310e|   T  |            NOTYPE|0000001e|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:564
-malloc              |0000312c|   T  |              FUNC|00000138|     |.text
-free                |00003264|   T  |              FUNC|00000112|     |.text
-strncpy             |00003376|   T  |              FUNC|0000001e|     |.text
-__do_global_dtors   |00003394|   T  |            NOTYPE|00000014|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2496
-_exit               |00003394|   T  |            NOTYPE|        |     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2496
-exit                |00003394|   W  |            NOTYPE|        |     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2496
-__stop_program      |000033aa|   t  |            NOTYPE|        |     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2280
-_etext              |000033ac|   T  |            NOTYPE|        |     |.text
-__data_load_start   |00003466|   A  |            NOTYPE|        |     |*ABS*
-__data_load_end     |0000346c|   A  |            NOTYPE|        |     |*ABS*
+global constructors keyed to 65535_0_Altimetr_SPI.ino.cpp.o.3749|00001ebc|   t  |              FUNC|000001e8|     |.text	C:\Users\krzys\AppData\Local\Arduino15\packages\megaTinyCore\hardware\megaavr\2.5.10\libraries\Wire\src/twi.c:708
+main                |000020a4|   T  |              FUNC|000004ec|     |.text	C:\Users\krzys\AppData\Local\Arduino15\packages\megaTinyCore\hardware\megaavr\2.5.10\cores\megatinycore/main.cpp:49
+_GLOBAL__sub_D_bmp  |00002590|   t  |              FUNC|0000006a|     |.text
+eeprom_read_dword   |000025fa|   T  |              FUNC|0000000c|     |.text	/home/toolsbuild/workspace/avr8-devices-pack/src/avr-libc/avr/lib/avrxmega3/attiny1624/../../../../libc/misc/eerd_dword.S:50
+eeprom_read_float   |000025fa|   T  |            NOTYPE|        |     |.text	/home/toolsbuild/workspace/avr8-devices-pack/src/avr-libc/avr/lib/avrxmega3/attiny1624/../../../../libc/misc/eerd_dword.S:50
+eeprom_update_dword |00002606|   T  |              FUNC|00000010|     |.text	/home/toolsbuild/workspace/avr8-devices-pack/src/avr-libc/avr/lib/avrxmega3/attiny1624/../../../../libc/misc/eeupd_dword.S:48
+eeprom_update_float |00002606|   T  |            NOTYPE|        |     |.text	/home/toolsbuild/workspace/avr8-devices-pack/src/avr-libc/avr/lib/avrxmega3/attiny1624/../../../../libc/misc/eeupd_dword.S:48
+eeprom_read_byte    |00002616|   T  |              FUNC|00000010|     |.text	/home/toolsbuild/workspace/avr8-devices-pack/src/avr-libc/avr/lib/avrxmega3/attiny1624/../../../../libc/misc/eerd_byte.S:51
+eeprom_mapen        |0000261e|   T  |            NOTYPE|        |     |.text	/home/toolsbuild/workspace/avr8-devices-pack/src/avr-libc/avr/lib/avrxmega3/attiny1624/../../../../libc/misc/eerd_byte.S:83
+eeprom_update_byte  |00002626|   T  |              FUNC|00000012|     |.text	/home/toolsbuild/workspace/avr8-devices-pack/src/avr-libc/avr/lib/avrxmega3/attiny1624/../../../../libc/misc/eeupd_byte.S:48
+eeprom_update_r18   |00002628|   T  |            NOTYPE|        |     |.text	/home/toolsbuild/workspace/avr8-devices-pack/src/avr-libc/avr/lib/avrxmega3/attiny1624/../../../../libc/misc/eeupd_byte.S:54
+eeprom_write_byte   |00002638|   T  |              FUNC|00000028|     |.text	/home/toolsbuild/workspace/avr8-devices-pack/src/avr-libc/avr/lib/avrxmega3/attiny1624/../../../../libc/misc/eewr_byte.S:42
+eeprom_write_r18    |0000263a|   T  |            NOTYPE|        |     |.text	/home/toolsbuild/workspace/avr8-devices-pack/src/avr-libc/avr/lib/avrxmega3/attiny1624/../../../../libc/misc/eewr_byte.S:66
+__prologue_saves__  |00002660|   T  |            NOTYPE|00000032|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2169
+__epilogue_restores__|00002692|   T  |            NOTYPE|00000030|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2222
+__subsf3            |000026c2|   T  |              FUNC|0000000a|     |.text
+__addsf3            |000026c4|   T  |            NOTYPE|        |     |.text
+__addsf3x           |000026e6|   T  |              FUNC|000000cc|     |.text
+__cmpsf2            |0000278c|   T  |              FUNC|00000008|     |.text
+__eqsf2             |0000278c|   T  |            NOTYPE|        |     |.text
+__lesf2             |0000278c|   T  |            NOTYPE|        |     |.text
+__ltsf2             |0000278c|   T  |            NOTYPE|        |     |.text
+__nesf2             |0000278c|   T  |            NOTYPE|        |     |.text
+__divsf3            |00002794|   T  |              FUNC|00000004|     |.text
+__divsf3x           |000027ae|   T  |              FUNC|000000dc|     |.text
+__divsf3_pse        |000027b2|   T  |            NOTYPE|        |     |.text
+__fixunssfsi        |00002864|   T  |              FUNC|00000058|     |.text
+__floatdisf         |000028bc|   T  |              FUNC|00000008|     |.text
+__floatunsisf       |000028c4|   T  |              FUNC|0000007a|     |.text
+__floatsisf         |000028c8|   T  |            NOTYPE|        |     |.text
+__floatundisf       |0000293e|   T  |              FUNC|0000007c|     |.text
+__fp_di2sf          |00002940|   T  |            NOTYPE|        |     |.text
+__fp_cmp            |000029ba|   T  |              FUNC|00000048|     |.text
+__fp_inf            |00002a02|   T  |              FUNC|0000000c|     |.text
+__fp_nan            |00002a0e|   T  |              FUNC|00000006|     |.text
+__fp_negdi          |00002a14|   T  |              FUNC|00000020|     |.text
+__fp_pscA           |00002a34|   T  |              FUNC|0000000e|     |.text
+__fp_pscB           |00002a42|   T  |              FUNC|0000000e|     |.text
+__fp_round          |00002a50|   T  |              FUNC|00000022|     |.text
+__fp_split3         |00002a72|   T  |              FUNC|00000044|     |.text
+__fp_splitA         |00002a82|   T  |            NOTYPE|        |     |.text
+__fp_zero           |00002ab6|   T  |              FUNC|0000000e|     |.text
+__fp_szero          |00002ab8|   T  |            NOTYPE|        |     |.text
+__gesf2             |00002ac4|   T  |              FUNC|00000008|     |.text
+__gtsf2             |00002ac4|   T  |            NOTYPE|        |     |.text
+__mulsf3            |00002acc|   T  |              FUNC|00000004|     |.text
+__mulsf3x           |00002ae4|   T  |              FUNC|000000d2|     |.text
+__mulsf3_pse        |00002ae8|   T  |            NOTYPE|        |     |.text
+pow                 |00002b92|   T  |              FUNC|00000098|     |.text
+__unordsf2          |00002c2a|   T  |              FUNC|00000008|     |.text
+exp                 |00002c3c|   T  |              FUNC|00000074|     |.text
+__fp_powser         |00002c94|   T  |              FUNC|0000004a|     |.text
+inverse             |00002cde|   T  |              FUNC|0000000e|     |.text
+ldexp               |00002cf0|   T  |              FUNC|00000074|     |.text
+log                 |00002d62|   T  |              FUNC|000000a0|     |.text
+modf                |00002de2|   T  |              FUNC|00000066|     |.text
+modff               |00002de2|   T  |            NOTYPE|        |     |.text
+__fp_mpack          |00002e48|   T  |              FUNC|0000001c|     |.text
+__fp_mpack_finite   |00002e4c|   T  |            NOTYPE|        |     |.text
+__mulsi3            |00002e64|   T  |            NOTYPE|0000001e|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:648
+__udivmodsi4        |00002e82|   T  |            NOTYPE|00000044|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:1638
+__udivmodsi4_loop   |00002e8e|   t  |            NOTYPE|        |     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:1646
+__udivmodsi4_ep     |00002ea8|   t  |            NOTYPE|        |     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:1660
+__muluhisi3         |00002ec6|   T  |            NOTYPE|00000014|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:626
+__mulshisi3         |00002eda|   T  |            NOTYPE|00000004|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:603
+__mulohisi3         |00002ede|   T  |            NOTYPE|00000008|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:613
+__muldi3            |00002ee6|   T  |            NOTYPE|00000090|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:617
+__muldi3_6          |00002f76|   T  |            NOTYPE|00000010|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:973
+__moddi3            |00002f86|   T  |            NOTYPE|00000004|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:1964
+__divdi3            |00002f8a|   T  |            NOTYPE|00000002|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:1972
+__divdi3_moddi3     |00002f8c|   T  |            NOTYPE|00000050|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:1977
+__umoddi3           |00002fdc|   T  |            NOTYPE|00000004|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:1806
+__udivdi3           |00002fe0|   T  |            NOTYPE|00000002|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:1814
+__udivdi3_umoddi3   |00002fe2|   T  |            NOTYPE|00000014|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:1818
+__udivmod64         |00002ff6|   T  |            NOTYPE|000000a2|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:1842
+__negdi2            |00003098|   T  |            NOTYPE|00000020|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2117
+__ashldi3           |000030b8|   T  |            NOTYPE|00000032|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:3169
+__ashrdi3           |000030ea|   T  |            NOTYPE|00000004|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:3122
+__lshrdi3           |000030ee|   T  |            NOTYPE|00000036|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:3131
+__adddi3            |00003124|   T  |            NOTYPE|00000012|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2051
+__subdi3            |00003136|   T  |            NOTYPE|00000012|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2080
+__cmpdi2_s8         |00003148|   T  |            NOTYPE|00000018|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2102
+__tablejump2__      |00003160|   T  |            NOTYPE|0000000c|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2296
+__umulhisi3         |0000316c|   T  |            NOTYPE|0000001e|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:564
+malloc              |0000318a|   T  |              FUNC|00000138|     |.text
+free                |000032c2|   T  |              FUNC|00000112|     |.text
+strncpy             |000033d4|   T  |              FUNC|0000001e|     |.text
+__do_global_dtors   |000033f2|   T  |            NOTYPE|00000014|     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2496
+_exit               |000033f2|   T  |            NOTYPE|        |     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2496
+exit                |000033f2|   W  |            NOTYPE|        |     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2496
+__stop_program      |00003408|   t  |            NOTYPE|        |     |.text	/home/admin/build/toolchain-avr-special/gcc-build/avr/avrxmega3/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2280
+_etext              |0000340a|   T  |            NOTYPE|        |     |.text
+__data_load_start   |000034c4|   A  |            NOTYPE|        |     |*ABS*
+__data_load_end     |000034ca|   A  |            NOTYPE|        |     |*ABS*
 __stack             |00003fff|   W  |            NOTYPE|        |     |*ABS*
 __TEXT_REGION_LENGTH__|00004000|   A  |            NOTYPE|        |     |*ABS*
 __RODATA_PM_OFFSET__|00008000|   A  |            NOTYPE|        |     |*ABS*
-digital_pin_to_timer|0000b3ac|   r  |            OBJECT|0000000c|     |.rodata	C:\Users\krzys\AppData\Local\Arduino15\packages\megaTinyCore\hardware\megaavr\2.5.10\variants\txy4/pins_arduino.h:255
-digital_pin_to_bit_position|0000b3b8|   r  |            OBJECT|0000000c|     |.rodata	C:\Users\krzys\AppData\Local\Arduino15\packages\megaTinyCore\hardware\megaavr\2.5.10\variants\txy4/pins_arduino.h:218
-_usart_pins         |0000b3c4|   r  |            OBJECT|00000008|     |.rodata
-vtable for UartClass|0000b3cc|   r  |            OBJECT|0000001a|     |.rodata
-vtable for TwoWire  |0000b3e6|   r  |            OBJECT|00000012|     |.rodata
-digital_pin_to_bit_mask|0000b3f8|   r  |            OBJECT|0000000c|     |.rodata	C:\Users\krzys\AppData\Local\Arduino15\packages\megaTinyCore\hardware\megaavr\2.5.10\variants\txy4/pins_arduino.h:237
-digital_pin_to_port |0000b404|   r  |            OBJECT|0000000c|     |.rodata	C:\Users\krzys\AppData\Local\Arduino15\packages\megaTinyCore\hardware\megaavr\2.5.10\variants\txy4/pins_arduino.h:199
-vtable for Adafruit_BMP280_Pressure|0000b410|   r  |            OBJECT|0000000e|     |.rodata
-vtable for Adafruit_BMP280_Temp|0000b41e|   r  |            OBJECT|0000000e|     |.rodata
+digital_pin_to_timer|0000b40a|   r  |            OBJECT|0000000c|     |.rodata	C:\Users\krzys\AppData\Local\Arduino15\packages\megaTinyCore\hardware\megaavr\2.5.10\variants\txy4/pins_arduino.h:255
+digital_pin_to_bit_position|0000b416|   r  |            OBJECT|0000000c|     |.rodata	C:\Users\krzys\AppData\Local\Arduino15\packages\megaTinyCore\hardware\megaavr\2.5.10\variants\txy4/pins_arduino.h:218
+_usart_pins         |0000b422|   r  |            OBJECT|00000008|     |.rodata
+vtable for UartClass|0000b42a|   r  |            OBJECT|0000001a|     |.rodata
+vtable for TwoWire  |0000b444|   r  |            OBJECT|00000012|     |.rodata
+digital_pin_to_bit_mask|0000b456|   r  |            OBJECT|0000000c|     |.rodata	C:\Users\krzys\AppData\Local\Arduino15\packages\megaTinyCore\hardware\megaavr\2.5.10\variants\txy4/pins_arduino.h:237
+digital_pin_to_port |0000b462|   r  |            OBJECT|0000000c|     |.rodata	C:\Users\krzys\AppData\Local\Arduino15\packages\megaTinyCore\hardware\megaavr\2.5.10\variants\txy4/pins_arduino.h:199
+vtable for Adafruit_BMP280_Pressure|0000b46e|   r  |            OBJECT|0000000e|     |.rodata
+vtable for Adafruit_BMP280_Temp|0000b47c|   r  |            OBJECT|0000000e|     |.rodata
 __DATA_REGION_ORIGIN__|00803800|   A  |            NOTYPE|        |     |*ABS*
 __data_start        |00803800|   D  |            NOTYPE|        |     |.data
 __malloc_heap_end   |00803800|   D  |            OBJECT|00000002|     |.data

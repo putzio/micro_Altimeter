@@ -85,7 +85,7 @@ void loop()
     // If the rocket has already reached the highest point write the max hight to flash
     else
     {
-      // eeprom_update_float(&maxHightEEM, maxHightRAM);
+       eeprom_update_float(&maxHightEEM, maxHightRAM);
     }
     if (Serial.available())
     {
