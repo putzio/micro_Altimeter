@@ -3,15 +3,18 @@
 # 3 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino" 2
 # 4 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino" 2
 # 5 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino" 2
+# 6 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino" 2
 
 // pinout
 // CS -> write LOW to choose the salve
-# 23 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
-Adafruit_BMP280 bmp(7 /* PB0*/, 8 /* PA1*/, 9 /* PA2*/, 10 /* PA3*/);
-float maxHightEEM 
-# 24 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino" 3
-                 __attribute__((section(".eeprom")))
 # 24 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
+SerialFlashFile flash;
+Adafruit_BMP280 bmp(7 /* PB0*/, 8 /* PA1*/, 9 /* PA2*/, 10 /* PA3*/);
+
+float maxHightEEM 
+# 27 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino" 3
+                 __attribute__((section(".eeprom")))
+# 27 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
                       ;
 float maxHightRAM;
 float initialHight;
@@ -28,13 +31,13 @@ void setup()
   if (!bmp.begin())
   {
     Serial.println((reinterpret_cast<const __FlashStringHelper *>(
-# 39 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino" 3
+# 42 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino" 3
                   (__extension__({static const char __c[] __attribute__((__progmem__)) = (
-# 39 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
+# 42 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
                   "Could not find a valid BMP280 sensor, check wiring or " "try a different address!"
-# 39 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino" 3
+# 42 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino" 3
                   ); &__c[0];}))
-# 39 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
+# 42 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
                   ))
                                                 );
     while (1)
@@ -61,7 +64,7 @@ void setup()
   standby [ms]:   125 -> 0xF5 [7:5] -> 010
 
   */
-# 55 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
+# 58 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
   bmp.setSampling(Adafruit_BMP280::MODE_NORMAL, /* Operating Mode. */
                   Adafruit_BMP280::SAMPLING_X1, /* Temp. oversampling */
                   Adafruit_BMP280::SAMPLING_X4, /* Pressure oversampling */
@@ -74,34 +77,53 @@ void setup()
     Serial.print("INITIAL HIGHT:\t");
     Serial.println(initialHight);
   }
-}
 
-void loop()
-{
-  if (millis() - t > 1000 /* ms*/)
+  // Flash
+  if (!SerialFlash.begin(1 /* PA5*/))
   {
-    t = millis();
-    float hight = bmp.readAltitude(1020.0) - initialHight;
-    if (hight > maxHightRAM)
+    while (1)
     {
-      maxHightRAM = hight;
-    }
-    // If the rocket has already reached the highest point write the max hight to flash
-    else
-    {
-       eeprom_update_float(&maxHightEEM, maxHightRAM);
-    }
-    if (Serial.available())
-    {
-      Serial.print("Hight:\t");
-      Serial.println(hight);
-    }
-
-    if (Serial.available() && !digitalRead(3 /* INT - PA7*/))
-    {
-      float readHight = eeprom_read_float(&maxHightEEM);
-      Serial.print("Max Hight:\t");
-      Serial.println(readHight);
+      Serial.println("Unable to access SPI Flash chip");
+      delay(1000);
     }
   }
-}
+  unsigned char id[5];
+  SerialFlash.readID(id);
+  unsigned long size = SerialFlash.capacity(id);
+
+  if (size > 0 && Serial.available())
+  {
+    Serial.print("Flash Memory has ");
+    Serial.print(size);
+    Serial.println(" bytes.");
+  }
+
+  void loop()
+  {
+    if (millis() - t > 1000 /* ms*/)
+    {
+      t = millis();
+      float hight = bmp.readAltitude(1020.0) - initialHight;
+      if (hight > maxHightRAM)
+      {
+        maxHightRAM = hight;
+      }
+      // If the rocket has already reached the highest point write the max hight to flash
+      else
+      {
+        eeprom_update_float(&maxHightEEM, maxHightRAM);
+      }
+      if (Serial.available())
+      {
+        Serial.print("Hight:\t");
+        Serial.println(hight);
+      }
+
+      if (Serial.available() && !digitalRead(3 /* INT - PA7*/))
+      {
+        float readHight = eeprom_read_float(&maxHightEEM);
+        Serial.print("Max Hight:\t");
+        Serial.println(readHight);
+      }
+    }
+  }

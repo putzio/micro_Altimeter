@@ -3,6 +3,7 @@
 #include <SPI.h>
 #include <avr/eeprom.h>
 #include <Adafruit_BMP280.h>
+#include <SerialFlash.h>
 
 // pinout
 // CS -> write LOW to choose the salve
@@ -21,16 +22,16 @@
 #define seaLevelhPa 1020.0
 #define TIME_INTERVAL 1000 // ms
 
+SerialFlashFile flash;
 Adafruit_BMP280 bmp(CS_BMP, MOSI, MISO, SCK);
+
 float maxHightEEM EEMEM;
 float maxHightRAM;
 float initialHight;
 uint64_t t = 0; // timer updated with millis()
-#line 28 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
+#line 31 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
 void setup();
-#line 69 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
-void loop();
-#line 28 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
+#line 31 "g:\\Studia\\PUT Rocket LAB\\altimetr\\Altimetr_SPI\\Altimetr_SPI.ino"
 void setup()
 {
   // put your setup code here, to run once:
@@ -70,35 +71,54 @@ void setup()
     Serial.print("INITIAL HIGHT:\t");
     Serial.println(initialHight);
   }
-}
 
-void loop()
-{
-  if (millis() - t > TIME_INTERVAL)
+  // Flash
+  if (!SerialFlash.begin(CS_FLASH))
   {
-    t = millis();
-    float hight = bmp.readAltitude(seaLevelhPa) - initialHight;
-    if (hight > maxHightRAM)
+    while (1)
     {
-      maxHightRAM = hight;
-    }
-    // If the rocket has already reached the highest point write the max hight to flash
-    else
-    {
-       eeprom_update_float(&maxHightEEM, maxHightRAM);
-    }
-    if (Serial.available())
-    {
-      Serial.print("Hight:\t");
-      Serial.println(hight);
-    }
-
-    if (Serial.available() && !digitalRead(SEND_DATA_UART_EN))
-    {
-      float readHight = eeprom_read_float(&maxHightEEM);
-      Serial.print("Max Hight:\t");
-      Serial.println(readHight);
+      Serial.println("Unable to access SPI Flash chip");
+      delay(1000);
     }
   }
-}
+  unsigned char id[5];
+  SerialFlash.readID(id);
+  unsigned long size = SerialFlash.capacity(id);
+
+  if (size > 0 && Serial.available())
+  {
+    Serial.print("Flash Memory has ");
+    Serial.print(size);
+    Serial.println(" bytes.");
+  }
+
+  void loop()
+  {
+    if (millis() - t > TIME_INTERVAL)
+    {
+      t = millis();
+      float hight = bmp.readAltitude(seaLevelhPa) - initialHight;
+      if (hight > maxHightRAM)
+      {
+        maxHightRAM = hight;
+      }
+      // If the rocket has already reached the highest point write the max hight to flash
+      else
+      {
+        eeprom_update_float(&maxHightEEM, maxHightRAM);
+      }
+      if (Serial.available())
+      {
+        Serial.print("Hight:\t");
+        Serial.println(hight);
+      }
+
+      if (Serial.available() && !digitalRead(SEND_DATA_UART_EN))
+      {
+        float readHight = eeprom_read_float(&maxHightEEM);
+        Serial.print("Max Hight:\t");
+        Serial.println(readHight);
+      }
+    }
+  }
 

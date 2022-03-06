@@ -1,7 +1,8 @@
-#include <Arduino.h>
-#include <SPI.h>
+//#include <Arduino.h>
+//#include <SPI.h>
 #include <avr/eeprom.h>
 #include <Adafruit_BMP280.h>
+#include <SPIMemory.h>
 
 // pinout
 // CS -> write LOW to choose the salve
@@ -17,12 +18,15 @@
 #define MISO 9              // PA2
 #define SCK 10              // PA3
 
-#define seaLevelhPa 1020.0
+#define SEA_LEVEL_HPA 1020.0
 #define TIME_INTERVAL 1000 // ms
 
+SPIFlash flash(CS_FLASH);
+
 Adafruit_BMP280 bmp(CS_BMP, MOSI, MISO, SCK);
-float maxHightEEM EEMEM;
-float maxHightRAM;
+
+// float maxHightEEM EEMEM;
+// float maxHightRAM;
 float initialHight;
 uint64_t t = 0; // timer updated with millis()
 void setup()
@@ -32,7 +36,8 @@ void setup()
     pinMode(i, OUTPUT);
   pinMode(SEND_DATA_UART_EN, INPUT_PULLUP);
   Serial.begin(115200);
-  Serial.println("START");
+
+  // Serial.println("START");
 
   if (!bmp.begin())
   {
@@ -58,40 +63,98 @@ void setup()
                   Adafruit_BMP280::FILTER_X4,       /* Filtering. */
                   Adafruit_BMP280::STANDBY_MS_125); /* Standby time. */
 
-  initialHight = bmp.readAltitude(seaLevelhPa);
-  if (Serial.available())
+  initialHight = bmp.readAltitude(SEA_LEVEL_HPA);
+  // if (Serial.available())
+  // {
+  Serial.print("INITIAL HIGHT:\t");
+  Serial.println(initialHight);
+  Serial.print("TEMP:\t");
+  Serial.println(bmp.readTemperature());
+  Serial.print("PRESSURE:\t");
+  Serial.println(bmp.readPressure());
+  // }
+  // Flash
+  flash.begin();
+
+  // if (Serial.available())
+  // {
+  //   Serial.print("Read Flash:\t");
+  //   Serial.println(flash.readFloat(0x00));
+  //   unsigned long size = flash.getCapacity();
+  //   Serial.print("Flash Memory has ");
+  //   Serial.print(size);
+  //   Serial.println(" bytes.");
+  // }
+  digitalWrite(CS_FLASH, LOW);
+  if (digitalRead(SEND_DATA_UART_EN))
   {
+    // flash.eraseChip();
+  }
+  while (1)
+  {
+    initialHight = bmp.readAltitude(SEA_LEVEL_HPA);
+    // if (Serial.available())
+    // {
     Serial.print("INITIAL HIGHT:\t");
     Serial.println(initialHight);
+    Serial.print("TEMP:\t");
+    Serial.println(bmp.readTemperature());
+    Serial.print("PRESSURE:\t");
+    Serial.println(bmp.readPressure());
+    delay(1000);
   }
 }
-
+uint32_t addr = 0x00;
+bool writeFlash = true;
 void loop()
 {
   if (millis() - t > TIME_INTERVAL)
   {
     t = millis();
-    float hight = bmp.readAltitude(seaLevelhPa) - initialHight;
-    if (hight > maxHightRAM)
-    {
-      maxHightRAM = hight;
-    }
-    // If the rocket has already reached the highest point write the max hight to flash
-    else
-    {
-       eeprom_update_float(&maxHightEEM, maxHightRAM);
-    }
-    if (Serial.available())
-    {
-      Serial.print("Hight:\t");
-      Serial.println(hight);
-    }
 
-    if (Serial.available() && !digitalRead(SEND_DATA_UART_EN))
+    if (!digitalRead(SEND_DATA_UART_EN))
     {
-      float readHight = eeprom_read_float(&maxHightEEM);
-      Serial.print("Max Hight:\t");
-      Serial.println(readHight);
+      if (writeFlash)
+      {
+        writeFlash = false;
+        addr = 0x00;
+      }
+      // if (Serial.available())
+      // {
+      //   float readHight = eeprom_read_float(&maxHightEEM);
+      //   Serial.print("Max Hight:\t");
+      //   Serial.println(readHight);
+      // }
+      Serial.print("ADDR:");
+      Serial.print("Time:\t");
+      Serial.print(flash.readLong(addr));
+      addr += 4;
+      Serial.print("\tHight:\t");
+      Serial.println(flash.readFloat(addr));
+      addr += 4;
+    }
+    else if (writeFlash)
+    {
+      float hight = bmp.readAltitude(SEA_LEVEL_HPA); // - initialHight;
+      Serial.println(hight);
+      flash.writeLong(addr, millis());
+      addr += 4;
+      flash.writeFloat(addr, hight);
+      addr += 4;
+      // if (hight > maxHightRAM)
+      // {
+      //   maxHightRAM = hight;
+      // }
+      // If the rocket has already reached the highest point write the max hight to flash
+      // else
+      // {
+      //   eeprom_update_float(&maxHightEEM, maxHightRAM);
+      // }
+      // if (Serial.available())
+      // {
+      //   Serial.print("Hight:\t");
+      //   Serial.println(hight);
+      // }
     }
   }
 }

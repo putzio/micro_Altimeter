@@ -1,8 +1,7 @@
 {
-    "sketch": "Altimetr_SPI.ino",
-    "output": "build",
     "board": "megaTinyCore:megaavr:atxy4",
     "programmer": "megaTinyCore:jtag2updi",
     "port": "COM5",
-    "configuration": "chip=1624,clock=20internal,bodvoltage=1v8,bodmode=disabled,eesave=enable,millis=enabled,startuptime=8,wiremode=mors,printf=default,attach=allenabled"
+    "configuration": "chip=1624,clock=20internal,bodvoltage=1v8,bodmode=disabled,eesave=enable,millis=enabled,startuptime=8,wiremode=mors,printf=default,attach=allenabled",
+    "sketch": "Altimetr_SPI.ino"
 }
